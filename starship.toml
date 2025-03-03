@@ -1,0 +1,83 @@
+# Inserts a blank line between shell prompts
+add_newline = true
+
+right_format = "$python"
+
+[directory]
+truncation_length = 5
+# format = "[$path]($style)[$lock_symbol]($lock_style)"
+# disabled = true
+
+# [character]
+# success_symbol = '[](bold green)'
+
+
+[git_branch]
+format = '\[[$symbol$branch]($style)\]'
+symbol = " "
+style = "bold yellow"
+
+
+[git_commit]
+# commit_hash_length = 8
+disabled = true
+
+[git_state]
+# format = '[\($state( $progress_current of $progress_total)\)]($style) '
+disabled = true
+
+[git_status]
+disabled = true
+
+[memory_usage]
+format = "$symbol[${ram}( | ${swap})]($style) "
+threshold = 70
+style = "bold dimmed white"
+disabled = true
+
+[package]
+disabled = true
+
+[python]
+python_binary = ["python3", "python"]
+format = "[(${virtualenv})]($style) "
+disabled = false
+
+[rust]
+disabled = true
+
+[time]
+disabled = true
+
+[typst]
+format = "[$symbol($version)]($style)"
+style = "bold #239dae"
+disabled = true
+
+[username]
+style_user = "bold dimmed blue"
+show_always = false
+
+[nodejs]
+disabled = true
+
+[vlang]
+disabled = true
+
+[vcsh]
+disabled = true
+
+[lua]
+disabled = true
+
+[vagrant]
+disabled = true
+
+[docker_context]
+disabled = true
+
+[helm]
+disabled = true
+
+[golang]
+disabled = true

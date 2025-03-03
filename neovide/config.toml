@@ -1,0 +1,10 @@
+wsl = false
+no-multigrid = true
+vsync = true
+# vsync = false
+maximized = false
+srgb = true
+idle = false
+frame = "buttonless"
+title-hidden = true
+tabs = false
