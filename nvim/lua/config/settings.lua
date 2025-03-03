@@ -38,6 +38,7 @@ vim.opt.laststatus = 3
 -- Base
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.signcolumn = "no"
 vim.opt.title = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true
