@@ -57,7 +57,6 @@ alias cat bat
 alias k kubectl
 alias t tmux
 alias v nvim
-alias nv "NVIM_APPNAME=new_nvim nvim"
 # alias nvide "NVIM_APPNAME=new_nvim neovide --frame none"
 alias neo "neovide --title-hidden --fork"
 
@@ -137,5 +136,7 @@ set -g fish_pager_color_completion ffffff
 set -g fish_pager_color_description 7b8496
 
 
+
 # loaders
 starship init fish | source
+zoxide init fish | source
