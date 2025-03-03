@@ -1,6 +1,5 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
-	cmd = "TSUpdate",
 	config = function()
 		local status, ts = pcall(require, "nvim-treesitter.configs")
 		if not status then
