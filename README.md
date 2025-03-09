@@ -7,8 +7,11 @@
 </br>
 
 # Requirements
-```shell
+```bash
 brew install asdf bat fd fish fzf httpie lazygit ripgrep tmux trash tree zoxide neovim lsd lua lua-language-server luajit luarocks
 ```
 
-
+# Cask
+```bash
+brew install --cask font-fira-code-nerd-font font-hack-nerd-font ghostty iina karabiner-elements neovide tunnelblick
+```
