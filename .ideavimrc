@@ -1,0 +1,98 @@
+"" Base Settings
+"" ========================================================
+
+set scrolloff=10
+set linenumber
+set showmode
+set showcmd
+
+set smartcase
+set incsearch
+set hlsearch
+
+set visualbell
+
+" Use system clipboard
+set clipboard+=unnamed
+
+
+"" Plugin Settings
+"" ========================================================
+
+set surround
+set highlightedyank
+set sneak
+set nerdtree
+
+" Easymotion settings
+set easymotion
+set notimeout
+
+let mapleader = "\\"
+
+" Key mappings
+" ========================================================
+nnoremap q <Nop>
+nnoremap r <Nop>
+nnoremap s <Nop>
+
+
+
+inoremap jj <Esc>
+
+" Tab navigation
+" nnoremap tt :tabnew<CR>
+nnoremap tn :tabnext<CR>
+nnoremap tb :tabprev<CR>
+nnoremap <A-n> :tabnext<CR>
+nnoremap <A-p> :tabprev<CR>
+nnoremap <F9>1 :tabn 1<CR>
+nnoremap <F9>2 :tabn 2<CR>
+nnoremap <F9>3 :tabn 3<CR>
+nnoremap <F9>4 :tabn 4<CR>
+nnoremap <F9>5 :tabn 5<CR>
+nnoremap <F9>6 :tabn 6<CR>
+nnoremap <F9>7 :tabn 7<CR>
+nnoremap <F9>8 :tabn 8<CR>
+nnoremap <F9>9 :tabn 9<CR>
+nnoremap <F9>0 :tabn 10<CR>
+
+" Comment lines
+map gc <action>(CommentByLineComment)
+map so <action>(ActivateDatabaseToolWindow)
+map \\a <action>(AutoShowProcessWindow)
+map tt <action>(FileChooser.NewFile)
+
+" Jump around with easymotion
+map <leader>j <Plug>(easymotion-s)
+
+" Open NERDTree (use q to exit)
+map se :NERDTreeToggle<CR>
+
+" Window splits
+map sv <Action>(SplitVertically)
+map ss <Action>(SplitHorizontally)
+map su <Action>(Unsplit)
+
+" Display options
+map \\dd <action>(ToggleDistractionFreeMode)
+
+" Actions
+map <leader>as <action>(SearchEverywhere)
+
+" File navigation
+" map <leader>ff <action>(GotoFile)
+map ;a <action>(RecentFiles)
+" map <leader>fc <action>(FindInPath)
+" map <leader><leader> <Action>(RecentFiles)
+map ;f <action>(GotoFile)
+
+" Close active tab
+map qq <action>(CloseContent)
+
+" Refactoring
+" map \\rr <Action>(Refactorings.QuickListPopupAction)
+map gr <Action>(ReformatCode)
+
+" Go to code
+nmap ;d <Action>(ShowUsages)
