@@ -5,6 +5,7 @@
 ---------------------------------------------
 -- vim.opt.conceallevel = 3 -- remove markdown and neorg syntax
 -- vim.opt.conceallevel = 2 -- remove markdown and neorg syntax
+-- vim.opt.conceallevel = 0 -- remove markdown and neorg syntax
 vim.opt.conceallevel = 0 -- remove markdown and neorg syntax
 vim.o.updatetime = 0
 
@@ -58,9 +59,9 @@ vim.opt.iskeyword = { "@", "48-57", "192-255" }
 
 -- indent
 vim.opt.smarttab = true
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
+-- vim.opt.tabstop = 4
+-- vim.opt.softtabstop = 4
+-- vim.opt.shiftwidth = 4
 
 -- others
 vim.opt.breakindent = true
@@ -68,6 +69,27 @@ vim.opt.wildoptions = "fuzzy"
 vim.opt.pumblend = 10
 vim.opt.pumheight = 10
 
+---------------------------------------------
+---------------------------------------------
+-- LSP
+---------------------------------------------
+---------------------------------------------
+vim.diagnostic.config({
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = " ",
+      [vim.diagnostic.severity.WARN] = " ",
+      [vim.diagnostic.severity.INFO] = "󰋼 ",
+      [vim.diagnostic.severity.HINT] = "󰌵 ",
+    },
+    numhl = {
+      [vim.diagnostic.severity.ERROR] = "",
+      [vim.diagnostic.severity.WARN] = "",
+      [vim.diagnostic.severity.HINT] = "",
+      [vim.diagnostic.severity.INFO] = "",
+    },
+  },
+})
 
 ---------------------------------------------
 ---------------------------------------------
@@ -78,7 +100,8 @@ vim.opt.pumheight = 10
 -- font
 -- vim.o.guifont = "Source Code Pro:h20"
 -- vim.o.guifont = "Hack Nerd Font Mono:h20"
-vim.o.guifont = "FiraCode Nerd Font Mono:h20"
+-- vim.o.guifont = "FiraCode Nerd Font Mono:h20"
+vim.o.guifont = "Maple Mono:h20"
 -- vim.o.guifont = "AnonymicePro Nerd Font Mono:h21"
 -- vim.o.guifont = "Agave Nerd Font Mono:h21"
 -- vim.o.guifont = "Hasklug Nerd Font Mono:h21"
@@ -99,5 +122,10 @@ vim.g.neovide_refresh_rate = 144
 vim.g.neovide_input_use_logo = 1
 vim.g.neovide_hide_mouse_when_typing = 1
 vim.g.neovide_input_macos_option_key_is_meta = true
--- vim.g.neovide_transparency = 0.8
--- vim.fn.pumvisible = true
+
+vim.g.neovide_opacity = 0.9
+vim.g.neovide_normal_opacity = 0.9
+
+vim.g.neovide_window_blurred = true
+vim.g.neovide_floating_blur_amount_x = 2.0
+vim.g.neovide_floating_blur_amount_y = 2.0

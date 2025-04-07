@@ -33,7 +33,6 @@ keymap.set("i", "<F22>", "<Nop>")
 keymap.set("i", "<F23>", "<Nop>")
 keymap.set("i", "<F24>", "<Nop>")
 
-
 ---------------------------------------------
 ---------------------------------------------
 -- BUFFER
@@ -56,7 +55,6 @@ keymap.set("v", "c", '"_c')
 keymap.set("n", "x", '"_ca')
 keymap.set("n", "qq", "<cmd>close<CR>")
 
-
 ---------------------------------------------
 ---------------------------------------------
 -- WINDOW
@@ -64,7 +62,6 @@ keymap.set("n", "qq", "<cmd>close<CR>")
 ---------------------------------------------
 keymap.set("n", "ss", "<cmd>split<Return><C-w>w")
 keymap.set("n", "sv", "<cmd>vsplit<Return><C-w>w")
-
 
 ---------------------------------------------
 ---------------------------------------------
@@ -75,6 +72,7 @@ keymap.set("n", "tt", "<cmd>tabnew<CR>")
 keymap.set("n", "ts", "<cmd>tab split<CR>")
 keymap.set("n", "tn", "<cmd>tabnext<CR>")
 keymap.set("n", "tb", "<cmd>tabprev<CR>")
+
 keymap.set("", "<BS>", "<Nop>")
 keymap.set("n", "<BS>k", "<cmd>tabnext<CR>")
 keymap.set("n", "<BS>j", "<cmd>tabprev<CR>")
@@ -101,6 +99,17 @@ keymap.set("n", "<F9>b", "<cmd>tabprev<CR>")
 keymap.set("n", "<F9>k", "<cmd>tabnext<CR>")
 keymap.set("n", "<F9>j", "<cmd>tabprev<CR>")
 
+keymap.set("n", "<A-1>", "<cmd>tabn 1<CR>")
+keymap.set("n", "<A-2>", "<cmd>tabn 2<CR>")
+keymap.set("n", "<A-3>", "<cmd>tabn 3<CR>")
+keymap.set("n", "<A-4>", "<cmd>tabn 4<CR>")
+keymap.set("n", "<A-5>", "<cmd>tabn 5<CR>")
+keymap.set("n", "<A-6>", "<cmd>tabn 6<CR>")
+keymap.set("n", "<A-7>", "<cmd>tabn 7<CR>")
+keymap.set("n", "<A-8>", "<cmd>tabn 8<CR>")
+keymap.set("n", "<A-9>", "<cmd>tabn 9<CR>")
+keymap.set("n", "<A-k>", "<cmd>tabnext<CR>")
+keymap.set("n", "<A-j>", "<cmd>tabprev<CR>")
 
 ---------------------------------------------
 ---------------------------------------------
@@ -111,7 +120,6 @@ vim.keymap.set("i", "jj", "<Esc>", { noremap = true, silent = true })
 vim.keymap.set("i", "<F1>", "<Esc>", { noremap = true, silent = true })
 vim.keymap.set({ "n", "v" }, "<leader>,", ";", { noremap = true, silent = true })
 
-
 ---------------------------------------------
 ---------------------------------------------
 -- LSP
@@ -119,7 +127,6 @@ vim.keymap.set({ "n", "v" }, "<leader>,", ";", { noremap = true, silent = true }
 ---------------------------------------------
 keymap.set("n", "<leader>rl", "<cmd>lua vim.diagnostic.reset()<CR>")
 keymap.set("n", "<A>1", "<cmd>tabn 1<CR>")
-
 
 ---------------------------------------------
 ---------------------------------------------
