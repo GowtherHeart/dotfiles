@@ -13,5 +13,5 @@ brew install asdf bat fd fish fzf httpie lazygit ripgrep tmux trash tree zoxide 
 
 # Cask
 ```bash
-brew install --cask font-fira-code-nerd-font font-hack-nerd-font ghostty iina karabiner-elements neovide tunnelblick
+brew install --cask font-fira-code-nerd-font font-hack-nerd-font font-maple-mono ghostty iina karabiner-elements neovide tunnelblick
 ```
