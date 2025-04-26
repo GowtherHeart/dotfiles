@@ -202,7 +202,7 @@ return {
           hide_by_name = {
             --"node_modules"
             "vendor",
-            "__init__.py",
+            -- "__init__.py",
           },
           hide_by_pattern = { -- uses glob style patterns
             --"*.meta",

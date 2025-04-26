@@ -98,6 +98,24 @@ return {
         return config
       end
 
+      local function picker_style_ivy(etc)
+        local config = {
+          winblend = 0,
+          border = true,
+          shorten_path = false,
+          heigth = 20,
+          width = 120,
+          prompt_title = "",
+          preview_title = "",
+        }
+
+        for k, v in pairs(etc) do
+          config[k] = v
+        end
+
+        return config
+      end
+
       local base_file_ignore = {
         "node_modules/.*",
         "venv/.*",
@@ -148,12 +166,7 @@ return {
         },
       }))
 
-      -- local fd_picker = theme.get_dropdown(
-      -- 	picker_style({
-      -- 		previewer = false,
-      -- 		find_command = { "fd", "-g", "--type", "f", "--strip-cwd-prefix", "-E", ".git", "-H" },
-      -- 	})
-      -- )
+      local picker_lsp = theme.get_ivy(picker_style_ivy({ preview_title = "", previewer = true }))
 
       telescope.setup({
         defaults = {
@@ -165,13 +178,10 @@ return {
           mappings = {
             i = {
               ["<esc>"] = actions.close,
-              -- ["<C-k>"] = require("telescope.actions").cycle_history_next,
-              -- ["<C-l>"] = require("telescope.actions").cycle_history_prev,
               ["<C-k>"] = function(prompt_bufnr)
                 local selection = require("telescope.actions.state").get_selected_entry()
                 local dir = vim.fn.fnamemodify(selection.path, ":p:h")
                 require("telescope.actions").close(prompt_bufnr)
-                -- Depending on what you want put `cd`, `lcd`, `tcd`
                 vim.cmd(string.format("silent lcd %s", dir))
               end,
             },
@@ -190,27 +200,17 @@ return {
           git_branches = picker,
           git_commits = picker,
           git_status = picker,
-          lsp_document_symbols = picker,
+          lsp_document_symbols = picker_lsp,
         },
         extensions = {
-          -- fzy_native = {
-          -- 	-- override_generic_sorter = false,
-          -- 	override_generic_sorter = true,
-          -- 	override_file_sorter = true,
-          -- },
           live_grep_args = {
             auto_quoting = true, -- enable/disable auto-quoting
-            -- define mappings, e.g.
             mappings = { -- extend mappings
               i = {
                 ["<C-k>"] = lga_actions.quote_prompt(),
                 ["<C-l>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
               },
             },
-            -- ... also accepts theme settings, for example:
-            -- theme = "dropdown", -- use dropdown theme
-            -- theme = { }, -- use own theme spec
-            -- layout_config = { mirror=true }, -- mirror preview pane
           },
           file_browser = {
             theme = "dropdown",
@@ -226,12 +226,10 @@ return {
                   vim.cmd(string.format("silent lcd %s", dir))
                 end,
                 ["<C-a>"] = fb_actions.create,
-                -- ["<C-d>"] = fb_actions.remove,
                 ["<C-r>"] = fb_actions.rename,
               },
               ["n"] = {
                 ["<C-a>"] = fb_actions.create,
-                -- ["<C-d>"] = fb_actions.remove,
                 ["<C-r>"] = fb_actions.rename,
               },
             },
@@ -243,14 +241,15 @@ return {
       })
 
       telescope.load_extension("harpoon")
-      -- telescope.load_extension("fzy_native")
       telescope.load_extension("file_browser")
       telescope.load_extension("live_grep_args")
 
-      -- telescope.load_extension("scope")
-
-      -- telescope.load_extension("completion")
-
+      -- -----------------------------
+      -- -----------------------------
+      -- KEYMAPS
+      -- -----------------------------
+      -- -----------------------------
+      -- FILES
       vim.keymap.set("n", ";f", function()
         builtin.find_files({
           no_ignore = false,
@@ -277,6 +276,7 @@ return {
         })
       end)
 
+      -- DIAGNOSTIC
       vim.keymap.set("n", ";E", function()
         builtin.diagnostics({ root_dir = true })
       end)
@@ -285,36 +285,20 @@ return {
         builtin.diagnostics({ bufnr = 0 })
       end)
 
-      vim.keymap.set("n", ";s", function()
+      -- TREESITER
+      vim.keymap.set("n", ";c", function()
         builtin.treesitter()
       end)
 
-      -- vim.keymap.set("n", ";v", function()
-      -- 	builtin.treesitter({
-      -- 		symbol_highlights = { "var" },
-      -- 	})
-      -- end)
-      --
-      -- vim.keymap.set("n", ";b", function()
-      -- 	builtin.treesitter({
-      -- 		symbols = { "type" },
-      -- 	})
-      -- end)
-      --
-      -- vim.keymap.set("n", ";c", function()
-      -- 	builtin.treesitter({
-      -- 		symbols = { "function" },
-      -- 	})
-      -- end)
-      --
-      -- vim.keymap.set("n", ";n", function()
-      -- 	builtin.treesitter({
-      -- 		symbols = { "field" },
-      -- 	})
-      -- end)
-
+      -- LSP SYMBOLS
       vim.keymap.set("n", ";q", function()
         builtin.lsp_document_symbols({})
+      end)
+
+      vim.keymap.set("n", ";s", function()
+        builtin.lsp_document_symbols({
+          symbols = { "class", "method", "function" },
+        })
       end)
 
       vim.keymap.set("n", ";<C-a>", function()
@@ -333,6 +317,7 @@ return {
         builtin.lsp_references(picker_previewer_rg)
       end)
 
+      -- GIT
       vim.keymap.set("n", ";gb", function()
         builtin.git_branches()
       end)

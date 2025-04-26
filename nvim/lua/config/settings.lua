@@ -54,14 +54,15 @@ vim.o.showtabline = 2
 -- chars
 vim.opt.list = true
 vim.opt.listchars = { eol = "↵" }
+-- vim.opt.listchars = { eol = "" }
 vim.cmd("set listchars+=tab:\\ \\ ")
 vim.opt.iskeyword = { "@", "48-57", "192-255" }
 
 -- indent
 vim.opt.smarttab = true
--- vim.opt.tabstop = 4
--- vim.opt.softtabstop = 4
--- vim.opt.shiftwidth = 4
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
 
 -- others
 vim.opt.breakindent = true
@@ -99,9 +100,9 @@ vim.diagnostic.config({
 
 -- font
 -- vim.o.guifont = "Source Code Pro:h20"
--- vim.o.guifont = "Hack Nerd Font Mono:h20"
+-- vim.o.guifont = "Hack Nerd Font Mono:h18"
 -- vim.o.guifont = "FiraCode Nerd Font Mono:h20"
-vim.o.guifont = "Maple Mono:h20"
+vim.o.guifont = "Maple Mono:h18"
 -- vim.o.guifont = "AnonymicePro Nerd Font Mono:h21"
 -- vim.o.guifont = "Agave Nerd Font Mono:h21"
 -- vim.o.guifont = "Hasklug Nerd Font Mono:h21"
@@ -109,8 +110,8 @@ vim.o.guifont = "Maple Mono:h20"
 
 -- cursor
 vim.g.neovide_cursor_vfx_mode = "ripple"
-vim.g.neovide_cursor_vfx_mode = "sonicboom"
-vim.g.neovide_cursor_animate_in_insert_mode = true
+-- vim.g.neovide_cursor_vfx_mode = "sonicboom"
+-- vim.g.neovide_cursor_animate_in_insert_mode = true
 
 -- animation
 vim.g.neovide_cursor_vfx_mode = ""
@@ -123,8 +124,8 @@ vim.g.neovide_input_use_logo = 1
 vim.g.neovide_hide_mouse_when_typing = 1
 vim.g.neovide_input_macos_option_key_is_meta = true
 
-vim.g.neovide_opacity = 0.9
-vim.g.neovide_normal_opacity = 0.9
+-- vim.g.neovide_opacity = 0.9
+-- vim.g.neovide_normal_opacity = 0.9
 
 vim.g.neovide_window_blurred = true
 vim.g.neovide_floating_blur_amount_x = 2.0
