@@ -25,6 +25,10 @@ set -x HOMEBREW_NO_INSTALL_CLEANUP TRUE
 # ITERM
 # set -x ITERM_ENABLE_SHELL_INTEGRATION_WITH_TMUX YES
 
+# mcfly init fish | source
+# atuin init fish | source
+
+
 # Base
 set -x EDITOR nvim
 set -x LANG en_US.UTF-8
@@ -57,6 +61,8 @@ alias cat bat
 alias k kubectl
 alias t tmux
 alias v nvim
+alias bclear "pbcopy < /dev/null"
+
 # alias nvide "NVIM_APPNAME=new_nvim neovide --frame none"
 alias neo "neovide --title-hidden --fork"
 
@@ -77,15 +83,28 @@ function project_config
 end
 
 function tnh
-    tmux new-session -d -s $argv
-	project_config $argv
-	cd
+    if test (count $argv) -eq 0
+        set session_name (basename (pwd))
+    else
+        set session_name $argv
+    end
+    tmux new-session -d -s $session_name
+    project_config $session_name
+    cd
 end
 
 function tw
 	set t_window $(tmux new-window -d -P -F)
 	tmux send-keys -t $t_window "source $PWD/$PROJECT_CONFIG" Enter
 	project_config $t_window
+end
+
+function pycache_clean
+	find . -type d -name __pycache__ -exec rm -r {} \+ 
+end
+
+function ff
+	aerospace list-windows --all | fzf --bind 'enter:execute(bash -c "aerospace focus --window-id {1}")+abort'
 end
 
 # git
@@ -134,6 +153,7 @@ set -g fish_pager_color_progress 7b8496
 set -g fish_pager_color_prefix 5ea1ff
 set -g fish_pager_color_completion ffffff
 set -g fish_pager_color_description 7b8496
+
 
 
 
