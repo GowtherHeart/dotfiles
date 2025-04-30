@@ -70,9 +70,6 @@ alias neo "neovide --title-hidden --fork"
 # Tmux
 set PROJECT_CONFIG ".local/fish/config.fish"
 alias tn 'tmux new-session -d -s'
-alias tk 'tmux kill-session -t'
-alias t_new 'tmux new -s shell'
-alias t_a 'tmux a -t shell'
 
 function project_config
 	if test -e $PWD/$PROJECT_CONFIG
@@ -102,6 +99,7 @@ end
 function pycache_clean
 	find . -type d -name __pycache__ -exec rm -r {} \+ 
 end
+
 
 function ff
 	aerospace list-windows --all | fzf --bind 'enter:execute(bash -c "aerospace focus --window-id {1}")+abort'
