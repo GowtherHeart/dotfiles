@@ -7,7 +7,6 @@
 -- vim.opt.conceallevel = 2 -- remove markdown and neorg syntax
 -- vim.opt.conceallevel = 0 -- remove markdown and neorg syntax
 vim.opt.conceallevel = 0 -- remove markdown and neorg syntax
-vim.o.updatetime = 0
 
 -- File
 vim.scriptencoding = "utf-8"
@@ -20,11 +19,14 @@ vim.g.loaded_perl_provider = 0
 vim.g.loaded_python_provider = 0
 vim.g.loaded_go_provider = 0
 vim.g.loaded_ruby_provider = 0
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
 -- Off swap
 vim.opt.backup = false
 vim.opt.writebackup = false
 vim.opt.swapfile = false
+vim.opt.undofile = false
 
 -- Mouse
 vim.opt.mouse = "a"
@@ -34,6 +36,11 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.laststatus = 3
 
 -- Base
+vim.o.timeoutlen = 300
+vim.opt.ttimeoutlen = 10
+vim.opt.ttyfast = true
+vim.opt.updatetime = 250
+
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.signcolumn = "no"
@@ -45,7 +52,6 @@ vim.opt.cursorline = true
 vim.opt.hlsearch = true
 vim.opt.ignorecase = true
 vim.opt.shell = "fish"
-vim.o.timeoutlen = 400
 
 -- tabline
 vim.o.showtabline = 2
@@ -53,7 +59,12 @@ vim.o.showtabline = 2
 
 -- chars
 vim.opt.list = true
-vim.opt.listchars = { eol = "↵" }
+-- vim.opt.listchars = { eol = "↵" }
+vim.opt.listchars = { eol = "󱞧" }
+-- vim.opt.listchars = { eol = "󱞱" }
+-- vim.opt.listchars = { eol = "" }
+-- vim.opt.listchars = { eol = "" }
+
 -- vim.opt.listchars = { eol = "" }
 vim.cmd("set listchars+=tab:\\ \\ ")
 vim.opt.iskeyword = { "@", "48-57", "192-255" }
@@ -130,3 +141,4 @@ vim.g.neovide_input_macos_option_key_is_meta = true
 vim.g.neovide_window_blurred = true
 vim.g.neovide_floating_blur_amount_x = 2.0
 vim.g.neovide_floating_blur_amount_y = 2.0
+vim.g.neovide_macos_simple_fullscreen = true
