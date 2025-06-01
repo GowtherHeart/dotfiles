@@ -5,7 +5,8 @@ return {
   opts = {
     -- add any opts here
     -- for example
-    provider = "openai",
+    -- provider = "openai",
+		provider = "claude-haiku",
     hints = { enabled = false },
     openai = {
       endpoint = "https://api.openai.com/v1",

@@ -1,5 +1,37 @@
 return {
   {
+    "olimorris/onedarkpro.nvim",
+    commit = "fd8aa7248f8b34c1f18203a3a96adcfbdab29907",
+    priority = 1000, -- Ensure it loads first
+    config = function()
+      local transparency = false
+      if vim.g.neovide then
+        transparency = false
+      end
+
+      require("onedarkpro").setup({
+        styles = {
+          types = "NONE",
+          methods = "bold",
+          numbers = "NONE",
+          strings = "bold,italic",
+          comments = "italic",
+          keywords = "bold,italic",
+          constants = "bold,italic",
+          functions = "NONE",
+          operators = "NONE",
+          variables = "NONE",
+          parameters = "italic",
+          conditionals = "NONE",
+          virtual_text = "NONE",
+        },
+        options = {
+          transparency = transparency,
+        },
+      })
+    end,
+  },
+  {
     "samharju/synthweave.nvim",
     commit = "50cb17af14dbdf8a2af634c40b9b20298f67aba0",
     lazy = true,

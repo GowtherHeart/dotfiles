@@ -5,8 +5,8 @@ return {
     keys = "etovxqpdygfblzhckisuran",
   },
   keys = {
-    { "<Space>", "<cmd>HopWord<cr>", mode = { "n", "v" }, desc = "Main Hope" },
-    { "f", "<cmd>HopChar1CurrentLine<cr>", mode = { "n", "v" }, desc = "Hope char" },
+    { "f", "<cmd>HopWord<cr>", mode = { "n", "v" }, desc = "Main Hope" },
+    { "<Tab>f", "<cmd>HopChar1CurrentLine<cr>", mode = { "n", "v" }, desc = "Hope char" },
     { "F", "<cmd>HopChar2<cr>", mode = { "n", "v" }, desc = "Hope char" },
     -- { "<leader><Space>", '<cmd>HopPattern<cr>', desc = "Hope pattern" },
   },
