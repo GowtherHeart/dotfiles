@@ -24,9 +24,14 @@ return {
       highlight = {
         enable = true,
         disable = function(lang, buf)
-          local max_filesize = 100 * 1024 -- 100 KB
+          local max_filesize = 50 * 1024 -- 50 KB for better memory usage
+          local max_lines = 5000
           local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
           if ok and stats and stats.size > max_filesize then
+            return true
+          end
+          -- Disable for files with too many lines
+          if vim.api.nvim_buf_line_count(buf) > max_lines then
             return true
           end
         end,
@@ -39,20 +44,20 @@ return {
         -- disable = { "norg" },
       },
       ensure_installed = {
-        "tsx",
-        "toml",
-        "json",
-        "yaml",
-        "css",
-        "html",
         "lua",
         "python",
         "go",
-        "dockerfile",
         "javascript",
+        "typescript",
+        "tsx",
+        "json",
+        "yaml",
+        "toml",
         "markdown",
-        "lua",
         "bash",
+        "dockerfile",
+        "html",
+        "css",
       },
       autotag = {
         enable = true,

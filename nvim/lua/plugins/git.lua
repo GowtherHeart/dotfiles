@@ -1,9 +1,11 @@
 return {
   {
     "tpope/vim-fugitive",
+    cmd = { "Git", "Gdiff", "Gstatus", "Gblame" },
   },
   {
     "lewis6991/gitsigns.nvim",
+    event = { "BufReadPre", "BufNewFile" },
     config = function()
       local status, git = pcall(require, "gitsigns")
       if not status then
@@ -16,7 +18,7 @@ return {
         linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
         word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
         watch_gitdir = {
-          interval = 0,
+          interval = 1000,
           follow_files = true,
         },
         attach_to_untracked = true,

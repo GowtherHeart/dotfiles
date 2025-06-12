@@ -1,34 +1,23 @@
 return {
   {
     "olimorris/onedarkpro.nvim",
-    commit = "fd8aa7248f8b34c1f18203a3a96adcfbdab29907",
-    priority = 1000, -- Ensure it loads first
+    priority = 1000,
+    lazy = false,
     config = function()
-      local transparency = false
-      if vim.g.neovide then
-        transparency = false
-      end
-
       require("onedarkpro").setup({
         styles = {
-          types = "NONE",
           methods = "bold",
-          numbers = "NONE",
           strings = "bold,italic",
           comments = "italic",
           keywords = "bold,italic",
           constants = "bold,italic",
-          functions = "NONE",
-          operators = "NONE",
-          variables = "NONE",
           parameters = "italic",
-          conditionals = "NONE",
-          virtual_text = "NONE",
         },
         options = {
-          transparency = transparency,
+          transparency = not vim.g.neovide,
         },
       })
+      vim.cmd.colorscheme("onedark_dark")
     end,
   },
   {

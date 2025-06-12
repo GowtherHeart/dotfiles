@@ -1,5 +1,11 @@
 return {
   "numToStr/Comment.nvim",
+  keys = {
+    { "gcc", mode = "n", desc = "Comment line" },
+    { "gc", mode = { "n", "v" }, desc = "Comment selection" },
+    { "gbc", mode = "n", desc = "Block comment" },
+    { "gb", mode = { "n", "v" }, desc = "Block comment selection" },
+  },
   opts = {
     ---Add a space b/w comment and the line
     padding = true,

@@ -51,72 +51,33 @@ return {
       ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
     }
 
-    -- local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
     local lsp_capabilities = require("blink.cmp").get_lsp_capabilities()
 
-    -- The main servers
-    local root_files = {
-      "pyproject.toml",
-      "setup.py",
-      "setup.cfg",
-      "requirements.txt",
-      "Pipfile",
-      "pyrightconfig.json",
-      ".git",
-    }
-
     nvim_lsp.pyright.setup({
-      -- root_dir = util.root_pattern(unpack(root_files)),
-      filetypes = { "python" },
-      single_file_support = true,
-      cmd = { "pyright-langserver", "--stdio" },
       handlers = handlers,
-      -- handlers = {
-      -- 	["textDocument/publishDiagnostics"] = function() end,
-      -- },
       settings = {
-        pyright = {
-          disableOrganizeImports = true,
-        },
+        pyright = { disableOrganizeImports = true },
         python = {
           analysis = {
-            -- autoSearchPaths = true,
-
-            -- diagnosticMode = "workspace",
-
             diagnosticMode = "openFilesOnly",
-            -- useLibraryCodeForTypes = true,
-            -- typeCheckingMode = "on",
-
-            -- typeCheckingMode = "off",
-            -- reportUnusedVariable = "off",
-
             ignore = { "*" },
           },
         },
       },
       capabilities = lsp_capabilities,
     })
-    nvim_lsp.gopls.setup({
-      handlers = handlers,
-    })
-
+    -- Language servers
+    nvim_lsp.gopls.setup({ handlers = handlers, capabilities = lsp_capabilities })
     nvim_lsp.rust_analyzer.setup({
-      settings = {
-        ["rust-analyzer"] = {
-          diagnostics = {
-            enable = false,
-          },
-        },
-      },
+      handlers = handlers,
+      capabilities = lsp_capabilities,
+      settings = { ["rust-analyzer"] = { diagnostics = { enable = false } } },
     })
-    nvim_lsp.bashls.setup({})
-    nvim_lsp.jsonls.setup({})
-    -- nvim_lsp.postgres_lsp.setup{}
+    nvim_lsp.bashls.setup({ handlers = handlers, capabilities = lsp_capabilities })
+    nvim_lsp.jsonls.setup({ handlers = handlers, capabilities = lsp_capabilities })
     nvim_lsp.marksman.setup({
-      cmd = { "marksman", "server" },
-      filetypes = { "markdown" },
-      single_file_support = true,
+      handlers = handlers,
+      capabilities = lsp_capabilities,
       root_dir = util.root_pattern(".git", ".marksman.toml"),
     })
   end,

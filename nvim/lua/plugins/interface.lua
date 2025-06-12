@@ -1,6 +1,7 @@
 return {
   {
     "nvim-lualine/lualine.nvim",
+    event = "VeryLazy",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {
       lualine_a = { "mode" },
@@ -41,6 +42,7 @@ return {
   {
     "nanozuki/tabby.nvim",
     commit = "d5bcb49109634720e05dd1aeff1c95578c8aa5b2",
+    lazy = false,
     dependencies = "nvim-tree/nvim-web-devicons",
     config = function()
       local theme = {
@@ -85,6 +87,7 @@ return {
   },
   {
     "lukas-reineke/indent-blankline.nvim",
+    event = { "BufReadPre", "BufNewFile" },
     main = "ibl",
     opts = {
       scope = {
@@ -98,5 +101,10 @@ return {
         char = "│",
       },
     },
+  },
+  {
+    "OXY2DEV/foldtext.nvim",
+    lazy = false,
+    commit = "f11adecff5fa1e77ce82f196a1573c54fabfb258",
   },
 }
