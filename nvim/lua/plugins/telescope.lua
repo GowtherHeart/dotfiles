@@ -1,49 +1,14 @@
 return {
-  {
-    "ThePrimeagen/harpoon",
-    branch = "harpoon2",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    config = function()
-      local harpoon = require("harpoon")
-
-      -- REQUIRED
-      harpoon:setup()
-      -- REQUIRED
-
-      vim.keymap.set("n", "<leader>a", function()
-        harpoon:list():add()
-      end)
-      vim.keymap.set("n", "<C-e>", function()
-        harpoon.ui:toggle_quick_menu(harpoon:list())
-      end)
-
-      vim.keymap.set("n", "<C-h>", function()
-        harpoon:list():select(1)
-      end)
-      vim.keymap.set("n", "<C-t>", function()
-        harpoon:list():select(2)
-      end)
-      vim.keymap.set("n", "<C-n>", function()
-        harpoon:list():select(3)
-      end)
-      vim.keymap.set("n", "<C-s>", function()
-        harpoon:list():select(4)
-      end)
-
-      -- Toggle previous & next buffers stored within Harpoon list
-      -- vim.keymap.set("n", "<C-S-P>", function() harpoon:list():prev() end)
-      vim.keymap.set("n", "<C-P>", function()
-        harpoon:list():prev()
-      end)
-      -- vim.keymap.set("n", "<C-S-N>", function() harpoon:list():next() end)
-      vim.keymap.set("n", "<C-N>", function()
-        harpoon:list():next()
-      end)
-    end,
-  },
+  require("plugins.harpoon-presets"),
   {
     "nvim-telescope/telescope.nvim",
     tag = "0.1.8",
+    cmd = "Telescope",
+    keys = {
+      { ";f", "<cmd>Telescope find_files<cr>", desc = "Find files" },
+      { ";r", "<cmd>Telescope live_grep<cr>", desc = "Live grep" },
+      { ";a", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
+    },
     dependencies = {
       "nvim-lua/plenary.nvim",
       "ThePrimeagen/harpoon",
@@ -170,10 +135,6 @@ return {
 
       telescope.setup({
         defaults = {
-          -- history = {
-          -- 	path = "~/.local/share/nvim/databases/telescope_history.sqlite3",
-          -- 	limit = 100,
-          -- },
           file_ignore_patterns = standart_picker_file_ignore,
           mappings = {
             i = {
@@ -350,12 +311,9 @@ return {
         }))
       end)
 
-      vim.keymap.set("n", ";;", function()
-        telescope.extensions.harpoon.marks(harpoon_picker)
-      end)
-      vim.keymap.set("n", "<C-e>", function()
-        telescope.extensions.harpoon.marks(harpoon_picker)
-      end)
+      -- vim.keymap.set("n", ";;", function()
+      --   telescope.extensions.harpoon.marks(harpoon_picker)
+      -- end)
 
       vim.keymap.set("n", "<F1>", function()
         builtin.resume({ initial_mode = "normal" })
