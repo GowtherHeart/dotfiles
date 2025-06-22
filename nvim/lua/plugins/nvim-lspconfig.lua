@@ -53,32 +53,92 @@ return {
 
     local lsp_capabilities = require("blink.cmp").get_lsp_capabilities()
 
-    nvim_lsp.pyright.setup({
+    -- Enhanced LSP caching
+    local default_config = {
+      capabilities = lsp_capabilities,
       handlers = handlers,
+      flags = {
+        debounce_text_changes = 150,
+        allow_incremental_sync = true,
+      },
+    }
+
+    nvim_lsp.pyright.setup(vim.tbl_deep_extend("force", default_config, {
       settings = {
         pyright = { disableOrganizeImports = true },
         python = {
           analysis = {
             diagnosticMode = "openFilesOnly",
             ignore = { "*" },
+            useLibraryCodeForTypes = false, -- Better performance
+            autoImportCompletions = true,
           },
         },
       },
-      capabilities = lsp_capabilities,
-    })
-    -- Language servers
-    nvim_lsp.gopls.setup({ handlers = handlers, capabilities = lsp_capabilities })
-    nvim_lsp.rust_analyzer.setup({
-      handlers = handlers,
-      capabilities = lsp_capabilities,
-      settings = { ["rust-analyzer"] = { diagnostics = { enable = false } } },
-    })
-    nvim_lsp.bashls.setup({ handlers = handlers, capabilities = lsp_capabilities })
-    nvim_lsp.jsonls.setup({ handlers = handlers, capabilities = lsp_capabilities })
-    nvim_lsp.marksman.setup({
-      handlers = handlers,
-      capabilities = lsp_capabilities,
+    }))
+
+    -- Custom pyrefly server configuration
+    -- local configs = require("lspconfig.configs")
+    -- if not configs.pyrefly then
+    --   configs.pyrefly = {
+    --     default_config = {
+    --       cmd = { "pyrefly", "lsp" },
+    --       filetypes = { "python" },
+    --       root_markers = {
+    --         "pyrefly.toml",
+    --         "pyproject.toml",
+    --         "setup.py",
+    --         "setup.cfg",
+    --         "requirements.txt",
+    --         "Pipfile",
+    --         ".git",
+    --       },
+    --       root_dir = util.root_pattern(
+    --         "pyrefly.toml",
+    --         "pyproject.toml",
+    --         "setup.py",
+    --         "setup.cfg",
+    --         "requirements.txt",
+    --         "Pipfile",
+    --         ".git"
+    --       ),
+    --       settings = {},
+    --     },
+    --   }
+    -- end
+    --
+    -- nvim_lsp.pyrefly.setup(vim.tbl_deep_extend("force", default_config, {
+    --   on_exit = function(code, _, _)
+    --     vim.notify("Closing Pyrefly LSP exited with code: " .. code, vim.log.levels.INFO)
+    --   end,
+    -- }))
+
+    -- Language servers with caching
+    nvim_lsp.gopls.setup(vim.tbl_deep_extend("force", default_config, {
+      settings = {
+        gopls = {
+          experimentalPostfixCompletions = true,
+          analyses = { unusedparams = true },
+          staticcheck = true,
+          gofumpt = true,
+        },
+      },
+    }))
+
+    nvim_lsp.rust_analyzer.setup(vim.tbl_deep_extend("force", default_config, {
+      settings = {
+        ["rust-analyzer"] = {
+          diagnostics = { enable = false },
+          cargo = { allFeatures = true },
+          checkOnSave = { command = "clippy" },
+        },
+      },
+    }))
+
+    nvim_lsp.bashls.setup(default_config)
+    nvim_lsp.jsonls.setup(default_config)
+    nvim_lsp.marksman.setup(vim.tbl_deep_extend("force", default_config, {
       root_dir = util.root_pattern(".git", ".marksman.toml"),
-    })
+    }))
   end,
 }
