@@ -40,6 +40,10 @@ vim.opt.history = 100
 vim.opt.synmaxcol = 200
 vim.opt.lazyredraw = true
 
+-- Project-based caching
+vim.opt.sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
+vim.opt.shada = "'100,<50,s10,h,f1"
+
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.signcolumn = "no"
