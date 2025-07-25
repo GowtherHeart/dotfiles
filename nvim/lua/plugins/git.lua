@@ -1,10 +1,12 @@
 return {
   {
     "tpope/vim-fugitive",
+		lazy = false,
     cmd = { "Git", "Gdiff", "Gstatus", "Gblame" },
   },
   {
     "lewis6991/gitsigns.nvim",
+		lazy = false,
     event = { "BufReadPre", "BufNewFile" },
     config = function()
       local status, git = pcall(require, "gitsigns")
@@ -50,9 +52,7 @@ return {
       vim.keymap.set("n", "rp", ":Gitsigns preview_hunk_inline<CR>")
       vim.keymap.set("n", "rd", ":Gitsigns diffthis<CR>")
       vim.keymap.set("n", "ra", ":Gitsigns stage_hunk<CR>")
-      vim.keymap.set("n", "rab", ":Gitsigns stage_buffer<CR>")
       vim.keymap.set("n", "rq", ":Gitsigns reset_hunk<CR>")
-      vim.keymap.set("n", "rqa", ":Gitsigns reset_buffer<CR>")
     end,
   },
 }

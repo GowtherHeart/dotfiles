@@ -42,8 +42,9 @@ keymap.set("", "<BS>", "<Nop>")
 for i = 1, 9 do
   keymap.set("n", "<Space>" .. i, "<cmd>tabn " .. i .. "<CR>")
 end
-keymap.set("n", "<Tab>k", "<cmd>tabnext<CR>")
-keymap.set("n", "<Tab>j", "<cmd>tabprev<CR>")
+-- Use different keys for tab navigation to preserve <C-i> jump forward
+keymap.set("n", "<leader>k", "<cmd>tabnext<CR>")
+keymap.set("n", "<leader>j", "<cmd>tabprev<CR>")
 
 -- MOVEMENT
 keymap.set("i", "jj", "<Esc>", { noremap = true, silent = true })

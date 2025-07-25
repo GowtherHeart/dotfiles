@@ -81,11 +81,15 @@ vim.opt.shiftwidth = 4
 -- others
 vim.opt.breakindent = true
 vim.opt.wildoptions = "fuzzy"
-vim.opt.pumblend = 10
+vim.opt.pumblend = 0
 vim.opt.pumheight = 10
 
 -- LSP CONFIGURATION
 vim.diagnostic.config({
+  float = {
+    border = "rounded",
+  },
+	-- virtual_lines = true,
   signs = {
     text = {
       [vim.diagnostic.severity.ERROR] = " ",
@@ -104,7 +108,7 @@ vim.diagnostic.config({
 
 -- NEOVIDE CONFIGURATION
 if vim.g.neovide then
-  vim.o.guifont = "Maple Mono:h18"
+  vim.o.guifont = "Maple Mono:h16"
   vim.g.neovide_cursor_vfx_mode = ""
   vim.g.neovide_refresh_rate = 144
   vim.g.neovide_input_use_logo = 1

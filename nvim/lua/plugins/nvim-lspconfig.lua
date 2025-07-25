@@ -77,42 +77,6 @@ return {
       },
     }))
 
-    -- Custom pyrefly server configuration
-    -- local configs = require("lspconfig.configs")
-    -- if not configs.pyrefly then
-    --   configs.pyrefly = {
-    --     default_config = {
-    --       cmd = { "pyrefly", "lsp" },
-    --       filetypes = { "python" },
-    --       root_markers = {
-    --         "pyrefly.toml",
-    --         "pyproject.toml",
-    --         "setup.py",
-    --         "setup.cfg",
-    --         "requirements.txt",
-    --         "Pipfile",
-    --         ".git",
-    --       },
-    --       root_dir = util.root_pattern(
-    --         "pyrefly.toml",
-    --         "pyproject.toml",
-    --         "setup.py",
-    --         "setup.cfg",
-    --         "requirements.txt",
-    --         "Pipfile",
-    --         ".git"
-    --       ),
-    --       settings = {},
-    --     },
-    --   }
-    -- end
-    --
-    -- nvim_lsp.pyrefly.setup(vim.tbl_deep_extend("force", default_config, {
-    --   on_exit = function(code, _, _)
-    --     vim.notify("Closing Pyrefly LSP exited with code: " .. code, vim.log.levels.INFO)
-    --   end,
-    -- }))
-
     -- Language servers with caching
     nvim_lsp.gopls.setup(vim.tbl_deep_extend("force", default_config, {
       settings = {

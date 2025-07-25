@@ -6,8 +6,7 @@ return {
   },
   keys = {
     { "f", "<cmd>HopWord<cr>", mode = { "n", "v" }, desc = "Main Hope" },
-    { "<Tab>f", "<cmd>HopChar1CurrentLine<cr>", mode = { "n", "v" }, desc = "Hope char" },
-    { "F", "<cmd>HopChar2<cr>", mode = { "n", "v" }, desc = "Hope char" },
-    -- { "<leader><Space>", '<cmd>HopPattern<cr>', desc = "Hope pattern" },
+    { "<space>f", "<cmd>HopChar2<cr>", mode = { "n", "v" }, desc = "Hope char" },
+    { "<space>k", "<cmd>:HopChar2CurrentLine<cr>", mode = { "n", "v" }, desc = "Hope char" },
   },
 }

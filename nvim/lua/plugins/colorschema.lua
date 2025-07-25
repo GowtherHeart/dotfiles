@@ -2,7 +2,7 @@ return {
   {
     "olimorris/onedarkpro.nvim",
     priority = 1000,
-    lazy = false,
+    lazy = true,
     config = function()
       require("onedarkpro").setup({
         styles = {
@@ -13,9 +13,9 @@ return {
           constants = "bold,italic",
           parameters = "italic",
         },
-        options = {
-          transparency = not vim.g.neovide,
-        },
+        -- options = {
+        --   transparency = not vim.g.neovide,
+        -- },
       })
       vim.cmd.colorscheme("onedark_dark")
     end,
@@ -23,8 +23,15 @@ return {
   {
     "samharju/synthweave.nvim",
     commit = "50cb17af14dbdf8a2af634c40b9b20298f67aba0",
-    lazy = true,
+    lazy = false,
     priority = 1000,
+		config = function()
+      -- vim.cmd.colorscheme("synthweave")
+      vim.cmd.colorscheme("synthweave-transparent")
+      -- Make LSP hover borders more visible
+      vim.api.nvim_set_hl(0, 'FloatBorder', { fg = '#a2c7e5', bg = 'NONE', bold = true })
+      vim.api.nvim_set_hl(0, 'NormalFloat', { link = 'Normal' })
+		end
   },
   {
     "yazeed1s/oh-lucy.nvim",

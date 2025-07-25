@@ -4,6 +4,7 @@ return {
     "nvim-telescope/telescope.nvim",
     tag = "0.1.8",
     cmd = "Telescope",
+		lazy = false,
     keys = {
       { ";f", "<cmd>Telescope find_files<cr>", desc = "Find files" },
       { ";r", "<cmd>Telescope live_grep<cr>", desc = "Live grep" },
