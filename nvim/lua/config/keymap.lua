@@ -54,29 +54,6 @@ keymap.set({ "n", "v" }, "<leader>,", ";", { noremap = true, silent = true })
 -- LSP
 keymap.set("n", "<leader>rl", "<cmd>lua vim.diagnostic.reset()<CR>")
 
--- Session management
-keymap.set("n", "<leader>ss", function()
-  local session_file = vim.fn.stdpath("data")
-    .. "/sessions/"
-    .. vim.fn.substitute(vim.fn.getcwd(), "/", "%%", "g")
-    .. ".vim"
-  vim.cmd("mksession! " .. session_file)
-  print("Session saved")
-end, { desc = "Save session" })
-
-keymap.set("n", "<leader>sl", function()
-  local session_file = vim.fn.stdpath("data")
-    .. "/sessions/"
-    .. vim.fn.substitute(vim.fn.getcwd(), "/", "%%", "g")
-    .. ".vim"
-  if vim.fn.filereadable(session_file) == 1 then
-    vim.cmd("source " .. session_file)
-    print("Session loaded")
-  else
-    print("No session found for this project")
-  end
-end, { desc = "Load session" })
-
 -- NEOVIDE
 vim.api.nvim_set_keymap("", "<D-v>", "+p<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("!", "<D-v>", "<C-R>+", { noremap = true, silent = true })
