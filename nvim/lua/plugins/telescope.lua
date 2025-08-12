@@ -1,10 +1,10 @@
 return {
-  require("plugins.harpoon-presets"),
+  -- require("plugins.harpoon-presets"),
   {
     "nvim-telescope/telescope.nvim",
     tag = "0.1.8",
     cmd = "Telescope",
-		lazy = false,
+    lazy = false,
     keys = {
       { ";f", "<cmd>Telescope find_files<cr>", desc = "Find files" },
       { ";r", "<cmd>Telescope live_grep<cr>", desc = "Live grep" },
@@ -12,7 +12,7 @@ return {
     },
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "ThePrimeagen/harpoon",
+      -- "ThePrimeagen/harpoon",
       "nvim-telescope/telescope-fzy-native.nvim",
       "nvim-telescope/telescope-live-grep-args.nvim",
       "nvim-telescope/telescope-file-browser.nvim",
@@ -109,8 +109,8 @@ return {
       table.insert(standart_picker_file_ignore, "__init__.py")
 
       local picker = theme.get_dropdown(picker_style({ previewer = false }))
-      local harpoon_picker =
-        theme.get_dropdown(picker_style({ previewer = false, file_ignore_patterns = base_file_ignore }))
+      -- local harpoon_picker =
+      --   theme.get_dropdown(picker_style({ previewer = false, file_ignore_patterns = base_file_ignore }))
       local without_package_ignore_picker =
         theme.get_dropdown(picker_style({ previewer = false, file_ignore_patterns = without_pkg_ignore }))
 
@@ -202,7 +202,7 @@ return {
         },
       })
 
-      telescope.load_extension("harpoon")
+      -- telescope.load_extension("harpoon")
       telescope.load_extension("file_browser")
       telescope.load_extension("live_grep_args")
 

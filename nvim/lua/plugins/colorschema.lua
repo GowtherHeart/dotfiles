@@ -1,4 +1,72 @@
 return {
+
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000,
+    lazy = false,
+    config = function()
+      require("catppuccin").setup({
+        flavour = "auto", -- latte, frappe, macchiato, mocha
+        background = { -- :h background
+          light = "latte",
+          dark = "mocha",
+        },
+        transparent_background = false, -- disables setting the background color.
+        float = {
+          transparent = false, -- enable transparent floating windows
+          solid = false, -- use solid styling for floating windows, see |winborder|
+        },
+        show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
+        term_colors = false, -- sets terminal colors (e.g. `g:terminal_color_0`)
+        dim_inactive = {
+          enabled = false, -- dims the background color of inactive window
+          shade = "dark",
+          percentage = 0.15, -- percentage of the shade to apply to the inactive window
+        },
+        no_italic = false, -- Force no italic
+        no_bold = false, -- Force no bold
+        no_underline = false, -- Force no underline
+        styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
+          comments = { "italic" }, -- Change the style of comments
+          conditionals = { "italic" },
+          loops = {},
+          functions = {},
+          keywords = {},
+          strings = {},
+          variables = {},
+          numbers = {},
+          booleans = {},
+          properties = {},
+          types = {},
+          operators = {},
+          -- miscs = {}, -- Uncomment to turn off hard-coded styles
+        },
+        color_overrides = {
+          mocha = {
+            base = "#000000",
+            mantle = "#000000",
+            crust = "#000000",
+          },
+        },
+        custom_highlights = {},
+        default_integrations = true,
+        auto_integrations = false,
+        integrations = {
+          blink_cmp = {
+            style = "bordered",
+          },
+          gitsigns = true,
+          treesitter = true,
+          neotree = true,
+        },
+      })
+
+      -- setup must be called before loading
+      vim.cmd.colorscheme("catppuccin")
+    end,
+  },
+
   {
     "olimorris/onedarkpro.nvim",
     priority = 1000,
@@ -23,21 +91,25 @@ return {
   {
     "samharju/synthweave.nvim",
     commit = "50cb17af14dbdf8a2af634c40b9b20298f67aba0",
-    lazy = false,
+    lazy = true,
     priority = 1000,
-		config = function()
+    config = function()
       -- vim.cmd.colorscheme("synthweave")
       vim.cmd.colorscheme("synthweave-transparent")
       -- Make LSP hover borders more visible
-      vim.api.nvim_set_hl(0, 'FloatBorder', { fg = '#a2c7e5', bg = 'NONE', bold = true })
-      vim.api.nvim_set_hl(0, 'NormalFloat', { link = 'Normal' })
-		end
+      vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#a2c7e5", bg = "NONE", bold = true })
+      vim.api.nvim_set_hl(0, "NormalFloat", { link = "Normal" })
+    end,
   },
   {
     "yazeed1s/oh-lucy.nvim",
     commit = "2d94e9b03efe4c50f4653b6f2b7b200d970fe1aa",
     lazy = true,
     priority = 1000,
+    config = function()
+      -- vim.cmd.colorscheme("oh-lucy")
+      vim.cmd.colorscheme("oh-lucy-evening")
+    end,
   },
   {
     "rose-pine/neovim",
@@ -45,7 +117,8 @@ return {
     lazy = true,
     priority = 1000,
     config = function()
-      local transparency = false
+      -- local transparency = false
+      local transparency = true
       if vim.g.neovide then
         transparency = false
       end
@@ -109,6 +182,8 @@ return {
         },
         before_highlight = function(group, highlight, palette) end,
       })
+
+      vim.cmd.colorscheme("rose-pine")
     end,
   },
 }

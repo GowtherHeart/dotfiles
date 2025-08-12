@@ -1,12 +1,12 @@
 return {
   {
     "tpope/vim-fugitive",
-		lazy = false,
+    lazy = false,
     cmd = { "Git", "Gdiff", "Gstatus", "Gblame" },
   },
   {
     "lewis6991/gitsigns.nvim",
-		lazy = false,
+    lazy = false,
     event = { "BufReadPre", "BufNewFile" },
     config = function()
       local status, git = pcall(require, "gitsigns")
