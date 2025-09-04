@@ -8,10 +8,10 @@
 
 # Requirements
 ```bash
-brew install asdf bat fd fish fzf httpie lazygit ripgrep tmux trash tree zoxide neovim lsd lua lua-language-server luajit luarocks
+brew install asdf bat fd fish fzf httpie lazygit ripgrep tmux trash tree zoxide neovim lsd lua lua-language-server luajit luarocks pwgen bottom
 ```
 
 # Cask
 ```bash
-brew install --cask font-fira-code-nerd-font font-hack-nerd-font font-maple-mono ghostty iina karabiner-elements neovide tunnelblick
+brew install --cask font-fira-code-nerd-font font-hack-nerd-font font-maple-mono ghostty iina karabiner-elements neovide tunnelblick hammerspoon alacritty betterdisplay
 ```
