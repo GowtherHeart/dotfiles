@@ -14,12 +14,13 @@ return {
       auto_install = true,
       sync_install = false,
       ignore_install = {},
-      -- highlight = {
-      -- 	enable = true,
-      -- 	additional_vim_regex_highlighting = true,
-      -- 	use_languagetree = true,
-      -- 	disable = {},
-      -- },
+
+      highlight = {
+      	enable = true,
+      	additional_vim_regex_highlighting = false,
+      	-- use_languagetree = true,
+      	-- disable = {},
+      },
 
       highlight = {
         enable = true,

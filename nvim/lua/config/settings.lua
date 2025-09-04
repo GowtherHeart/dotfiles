@@ -52,6 +52,9 @@ vim.opt.hlsearch = true
 vim.opt.ignorecase = true
 vim.opt.shell = "fish"
 
+
+vim.o.winborder = "rounded"
+
 -- tabline
 vim.o.showtabline = 2
 

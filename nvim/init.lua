@@ -7,7 +7,8 @@ require("local.pydochide")
 
 vim.lsp.enable('gopls', false)
 vim.lsp.enable('rust_analyzer', false)
-vim.lsp.enable('pyrefly')
+-- vim.lsp.enable('pyrefly')
+vim.lsp.enable('pyright')
 
 
 -- vim.api.nvim_create_autocmd("VimLeavePre", {

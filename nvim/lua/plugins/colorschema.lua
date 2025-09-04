@@ -53,12 +53,16 @@ return {
         default_integrations = true,
         auto_integrations = false,
         integrations = {
-          blink_cmp = {
-            style = "bordered",
-          },
+          -- blink_cmp = {
+          --   style = "bordered",
+          -- },
+					cmp = true,
           gitsigns = true,
           treesitter = true,
           neotree = true,
+					native_lsp = {
+							enabled = false,
+					},
         },
       })
 
