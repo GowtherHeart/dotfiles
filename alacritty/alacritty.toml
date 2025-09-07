@@ -1,0 +1,59 @@
+# Alacritty Configuration
+[general]
+import = [
+	# "~/.config/alacritty/theme/oh-lucy-evening.toml"
+	"~/.config/alacritty/theme/catppuccin-mocha.toml"
+	# "~/.config/alacritty/theme/tokyonight_night.toml"
+]
+
+[window]
+padding = { x = 10, y = 10 }
+# opacity = 0.95
+opacity = 1
+decorations = "full"
+# decorations = "Buttonless"
+dynamic_title = false
+# startup_mode = "Maximized"
+startup_mode = "SimpleFullscreen"
+
+[font]
+normal = { family = "Hack Nerd Font Mono", style = "Regular" }
+# normal = { family = "Maple Mono", style = "Regular" }
+# bold = { family = "Maple Mono", style = "Bold" }
+# italic = { family = "Maple Mono", style = "Italic" }
+# bold_italic = { family = "Maple Mono", style = "Bold Italic" }
+size = 16.0
+
+[cursor]
+style = { shape = "Block", blinking = "On" }
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+# [shell]
+# program = "/usr/local/bin/tmux"
+# args = ["new-session", "-A", "-s", "main"]
+
+[keyboard]
+bindings = [
+    { key = "V", mods = "Control|Shift", action = "Paste" },
+    { key = "C", mods = "Control|Shift", action = "Copy" },
+    { key = "Plus", mods = "Control", action = "IncreaseFontSize" },
+    { key = "Minus", mods = "Control", action = "DecreaseFontSize" },
+    { key = "Key0", mods = "Control", action = "ResetFontSize" },
+    # Tmux key bindings
+    { key = "T", mods = "Command", chars = "\u0002c" },  # New tmux window (Ctrl-b c)
+    { key = "W", mods = "Command", chars = "\u0002x" },  # Close tmux pane (Ctrl-b x)
+    { key = "D", mods = "Command|Shift", chars = "\u0002%" },  # Split vertically (Ctrl-b %)
+    { key = "D", mods = "Command", chars = "\u0002\"" },  # Split horizontally (Ctrl-b ")
+    { key = "Left", mods = "Command", chars = "\u0002\u001b[D" },  # Navigate left pane
+    { key = "Right", mods = "Command", chars = "\u0002\u001b[C" },  # Navigate right pane
+    { key = "Up", mods = "Command", chars = "\u0002\u001b[A" },  # Navigate up pane
+    { key = "Down", mods = "Command", chars = "\u0002\u001b[B" },  # Navigate down pane
+    { key = "Key1", mods = "Command", chars = "\u00021" },  # Switch to window 1
+    { key = "Key2", mods = "Command", chars = "\u00022" },  # Switch to window 2
+    { key = "Key3", mods = "Command", chars = "\u00023" },  # Switch to window 3
+    { key = "Key4", mods = "Command", chars = "\u00024" },  # Switch to window 4
+    { key = "Key5", mods = "Command", chars = "\u00025" },  # Switch to window 5
+]
