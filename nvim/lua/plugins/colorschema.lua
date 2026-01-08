@@ -56,13 +56,13 @@ return {
           -- blink_cmp = {
           --   style = "bordered",
           -- },
-					cmp = true,
+          cmp = true,
           gitsigns = true,
           treesitter = true,
           neotree = true,
-					native_lsp = {
-							enabled = false,
-					},
+          native_lsp = {
+            enabled = false,
+          },
         },
       })
 

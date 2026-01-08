@@ -35,6 +35,5 @@ return {
         end, opts)
       end,
     })
-
   end,
 }

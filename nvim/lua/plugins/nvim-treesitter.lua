@@ -1,5 +1,6 @@
 return {
   "nvim-treesitter/nvim-treesitter",
+  commit = "42fc28ba918343ebfd5565147a42a26580579482",
   event = { "BufReadPost", "BufNewFile" },
   cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
   build = ":TSUpdate",
@@ -16,10 +17,10 @@ return {
       ignore_install = {},
 
       highlight = {
-      	enable = true,
-      	additional_vim_regex_highlighting = false,
-      	-- use_languagetree = true,
-      	-- disable = {},
+        enable = true,
+        additional_vim_regex_highlighting = false,
+        -- use_languagetree = true,
+        -- disable = {},
       },
 
       highlight = {
@@ -41,8 +42,6 @@ return {
       indent = {
         enable = true,
         disable = { "sql" },
-        -- disable = { "python", "yaml" },
-        -- disable = { "norg" },
       },
       ensure_installed = {
         "lua",
@@ -63,9 +62,6 @@ return {
       autotag = {
         enable = true,
       },
-      -- context_commentstring = {
-      -- 	enable = true,
-      -- },
     })
   end,
 }
